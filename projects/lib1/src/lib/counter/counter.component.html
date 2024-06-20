@@ -1,0 +1,19 @@
+<div>
+  <h1>Counter: {{ counter$ | async }}</h1>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+  <button (click)="reset()">Reset</button>
+
+  <h2>Users</h2>
+  <p>Number of users: {{ (users$ | async)?.length }}</p>
+  <ul>
+    <li *ngFor="let user of users$ | async">
+      <img [src]="user.pictureUrl" alt="User Picture" width="50">
+      {{ user.name }} ({{ user.email }})
+      <button (click)="removeUser(user.id)">Remove</button>
+    </li>
+  </ul>
+<input type="number" [(ngModel)]="numberOfUsersToAdd" placeholder="Number of users to add">
+  <button (click)="addRandomUser()">Add Random User</button>
+  <button (click)="removeAllUsers()">Remove All Users</button>
+</div>
